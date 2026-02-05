@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANDON THE GOAT & SIGMA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --goat-gold: #FFD700;
+            --sigma-red: #FF0040;
+            --void-black: #0a0a0a;
+            --chrome: #c0c0c0;
+            --money-green: #00ff88;
+            --love-pink: #ff006e;
+            --love-purple: #8338ec;
+        }
+
+        body {
+            background: var(--void-black);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        .glitch {
+            font-family: 'Black Ops One', cursive;
+            position: relative;
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--sigma-red);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--goat-gold);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            20% { clip: rect(58px, 9999px, 15px, 0); }
+            40% { clip: rect(12px, 9999px, 76px, 0); }
+            60% { clip: rect(89px, 9999px, 32px, 0); }
+            80% { clip: rect(4px, 9999px, 67px, 0); }
+            100% { clip: rect(55px, 9999px, 11px, 0); }
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 99px, 0); }
+            20% { clip: rect(24px, 9999px, 5px, 0); }
+            40% { clip: rect(88px, 9999px, 43px, 0); }
+            60% { clip: rect(15px, 9999px, 78px, 0); }
+            80% { clip: rect(91px, 9999px, 29px, 0); }
+            100% { clip: rect(37px, 9999px, 62px, 0); }
+        }
+
+        @keyframes glitch-skew {
+            0% { transform: skew(0deg); }
+            10% { transform: skew(-2deg); }
+            20% { transform: skew(2deg); }
+            30% { transform: skew(0deg); }
+            100% { transform: skew(0deg); }
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at center, #1a1a2e 0%, var(--void-black) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 8rem);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--goat-gold), white, var(--sigma-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--chrome);
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            margin-bottom: 3rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .floating-orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .orbit-img {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid var(--goat-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: orbit 20s linear infinite;
+            opacity: 0.8;
+        }
+
+        .orbit-img:nth-child(1) { animation-delay: 0s; top: 10%; left: 10%; }
+        .orbit-img:nth-child(2) { animation-delay: -3.33s; top: 10%; right: 10%; animation-direction: reverse; }
+        .orbit-img:nth-child(3) { animation-delay: -6.66s; bottom: 10%; left: 10%; }
+        .orbit-img:nth-child(4) { animation-delay: -10s; bottom: 10%; right: 10%; animation-direction: reverse; }
+        .orbit-img:nth-child(5) { animation-delay: -13.33s; top: 50%; left: 5%; }
+        .orbit-img:nth-child(6) { animation-delay: -16.66s; top: 50%; right: 5%; animation-direction: reverse; }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(50px) rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) translateX(50px) rotate(-180deg) scale(1.2); }
+            100% { transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1); }
+        }
+
+        .sigma-grid {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--void-black) 0%, #1a1a1a 100%);
+        }
+
+        /* FIXED SECTION TITLE - RESPONSIVE AND NO CUTOFF */
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #222;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .grid-item:hover {
+            border-color: var(--goat-gold);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: grayscale(20%) contrast(1.1);
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%) contrast(1.2);
+        }
+
+        .grid-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover .grid-overlay {
+            transform: translateY(0);
+        }
+
+        .grid-number {
+            font-family: 'Black Ops One', cursive;
+            font-size: 4rem;
+            color: var(--sigma-red);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        /* RENT SECTIONS BASE */
+        .rent-section {
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rent-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-tag {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Black Ops One', cursive;
+            font-size: 2.5rem;
+            margin: 2rem 0;
+            transform: rotate(-2deg);
+            animation: float-price 3s ease-in-out infinite;
+        }
+
+        @keyframes float-price {
+            0%, 100% { transform: rotate(-2deg) translateY(0); }
+            50% { transform: rotate(-2deg) translateY(-10px); }
+        }
+
+        .features-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list li::before {
+            font-weight: bold;
+        }
+
+        .rent-btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 1.5rem 4rem;
+            font-family: 'Black Ops One', cursive;
+            font-size: 1.5rem;
+            border-radius: 100px;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .guarantee {
+            margin-top: 1.5rem;
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* RENT FRIEND - GREEN/GOLD */
+        .rent-friend {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #1a1a2e 100%);
+        }
+
+        .rent-friend::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 215, 0, 0.03) 10px,
+                rgba(255, 215, 0, 0.03) 20px
+            );
+        }
+
+        .rent-friend .price-tag {
+            background: linear-gradient(135deg, var(--money-green), #00cc6a);
+            color: var(--void-black);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .rent-friend .features-list li {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .rent-friend .features-list li::before {
+            content: '✓';
+            color: var(--money-green);
+        }
+
+        .rent-friend .rent-btn {
+            background: linear-gradient(135deg, var(--goat-gold), #ff6b00);
+            color: var(--void-black);
+            box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+            animation: pulse-gold 2s infinite;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+
+        .rent-friend .rent-btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+            animation: none;
+        }
+
+        /* RENT BOYFRIEND - PINK/PURPLE */
+        .rent-bf {
+            background: linear-gradient(135deg, #1a0b1a 0%, #0f0a1e 50%, #1a0b1a 100%);
+        }
+
+        .rent-bf::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(131, 56, 236, 0.1) 0%, transparent 50%);
+        }
+
+        /* Floating hearts */
+        .hearts-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--love-pink);
+            font-size: 20px;
+            opacity: 0.3;
+            animation: float-heart 10s infinite linear;
+        }
+
+        @keyframes float-heart {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .rent-bf .price-tag {
+            background: linear-gradient(135deg, var(--love-pink), var(--love-purple));
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+            transform: rotate(2deg);
+            animation: float-price-bf 3s ease-in-out infinite;
+        }
+
+        @keyframes float-price-bf {
+            0%, 100% { transform: rotate(2deg) translateY(0); }
+            50% { transform: rotate(2deg) translateY(-10px); }
+        }
+
+        .rent-bf .features-list li {
+            background: rgba(255, 0, 110, 0.1);
+            border: 1px solid rgba(255, 0, 110, 0.3);
+            color: #ffb3d1;
+        }
+
+        .rent-bf .features-list li::before {
+            content: '♥';
+            color: var(--love-pink);
+        }
+
+        .rent-bf .rent-btn {
+            background: linear-gradient(135deg, var(--love-pink), var(--love-purple));
+            color: white;
+            box-shadow: 0 0 0 0 rgba(255, 0, 110, 0.7);
+            animation: pulse-pink 2s infinite;
+        }
+
+        @keyframes pulse-pink {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 110, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 0, 110, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 110, 0); }
+        }
+
+        .rent-bf .rent-btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 0, 110, 0.4);
+            animation: none;
+        }
+
+        .rent-bf .guarantee {
+            color: #b388ff;
+        }
+
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            color: var(--chrome);
+            font-family: 'Black Ops One', cursive;
+            font-size: 1.2rem;
+        }
+
+        .vs-divider::before,
+        .vs-divider::after {
+            content: '';
+            height: 2px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--chrome), transparent);
+        }
+
+        .kaleidoscope-section {
+            padding: 5rem 2rem;
+            background: var(--void-black);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .kaleidoscope-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+            position: relative;
+        }
+
+        .kaleido-img {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--goat-gold);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .kaleido-img:hover {
+            z-index: 100 !important;
+            transform: scale(2) rotate(0deg) !important;
+            border-color: var(--sigma-red);
+            box-shadow: 0 0 60px rgba(255, 0, 64, 0.6);
+        }
+
+        .stats-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(90deg, var(--sigma-red), var(--goat-gold));
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--void-black);
+        }
+
+        .stat-number {
+            font-family: 'Black Ops One', cursive;
+            font-size: 4rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .terminal-section {
+            padding: 5rem 2rem;
+            background: #001100;
+            font-family: 'Courier New', monospace;
+        }
+
+        .terminal {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border: 2px solid #0f0;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        .terminal-header {
+            color: #0f0;
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .terminal-content {
+            color: #0f0;
+            line-height: 1.6;
+        }
+
+        .terminal-line {
+            margin: 0.5rem 0;
+            opacity: 0;
+            animation: typeIn 0.5s forwards;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: #0f0;
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes typeIn {
+            to { opacity: 1; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--void-black);
+            border-top: 1px solid #333;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--goat-gold);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--sigma-red);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        @media (max-width: 768px) {
+            .orbit-img {
+                width: 80px;
+                height: 80px;
+            }
+            .grid-item img {
+                height: 300px;
+            }
+            .price-tag {
+                font-size: 1.8rem;
+            }
+            .rent-btn {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+            }
+            .vs-divider::before,
+            .vs-divider::after {
+                width: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles" id="particles"></div>
+
+    <section class="hero">
+        <div class="floating-orbit">
+            <img src="landon 1.jpeg" class="orbit-img" alt="Landon 1">
+            <img src="landon 2.jpeg" class="orbit-img" alt="Landon 2">
+            <img src="landon 3.jpeg" class="orbit-img" alt="Landon 3">
+            <img src="landon 4.jpeg" class="orbit-img" alt="Landon 4">
+            <img src="landon 5.jpeg" class="orbit-img" alt="Landon 5">
+            <img src="landon 6.jpeg" class="orbit-img" alt="Landon 6">
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="glitch" data-text="LANDON">LANDON</h1>
+            <div class="subtitle">The GOAT & Sigma</div>
+            <p style="color: #888; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                Unapologetically iconic. Walking dichotomy of chaos and grindset. 
+                Certified legend status.
+            </p>
+        </div>
+        
+        <div style="position: absolute; bottom: 2rem; animation: bounce 2s infinite;">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <section class="sigma-grid reveal">
+        <h2 class="section-title glitch" data-text="THE ARCHIVE">THE ARCHIVE</h2>
+        <div class="grid-container" id="gridContainer"></div>
+    </section>
+
+    <!-- RENT FRIEND SECTION -->
+    <section class="rent-section rent-friend reveal">
+        <div class="rent-container">
+            <h2 class="section-title glitch" data-text="RENT THE LEGEND" style="margin-bottom: 1rem;">RENT THE LEGEND</h2>
+            <p style="color: #aaa; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                Premium friendship as a service. Experience the aura. Witness the grindset. 
+                Limited availability.
+            </p>
+            
+            <div class="price-tag">$6.99/week</div>
+            
+            <ul class="features-list">
+                <li>Unlimited Emotional Support</li>
+                <li>Sigma Mentorship Sessions</li>
+                <li>24/7 Hype Man Services</li>
+                <li>Goat Level Advice</li>
+                <li>Instant Rizz Consultation</li>
+                <li>Grindset Optimization</li>
+            </ul>
+            
+            <a href="https://checkout.square.site/merchant/MLYDM6E4B49X0/location/LYRQTEYB9FCF5/order/O6Q4P4w5fbSLyZ282JkdOYtRs3fZY" 
+               class="rent-btn" 
+               target="_blank">
+                RENT NOW ⚡
+            </a>
+            
+            <p class="guarantee">✓ 100% Satisfaction Guaranteed ✓ Cancel Anytime ✓ No Refunds (Sigma Rule #1)</p>
+        </div>
+    </section>
+
+    <div class="vs-divider">OR UPGRADE TO</div>
+
+    <!-- RENT BOYFRIEND SECTION -->
+    <section class="rent-section rent-bf reveal">
+        <div class="hearts-container" id="hearts"></div>
+        <div class="rent-container">
+            <h2 class="section-title glitch" data-text="RENT THE BOYFRIEND" style="margin-bottom: 1rem; color: #ff006e;">RENT THE BOYFRIEND</h2>
+            <p style="color: #ffb3d1; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                Premium companionship experience. The full Landon package. 
+                Handle with care. Extremely high value.
+            </p>
+            
+            <div class="price-tag">$6.99/day</div>
+            
+            <ul class="features-list">
+                <li>All Friend Features Included</li>
+                <li>Good Morning/Night Texts</li>
+                <li>Hand Holding (Virtual)</li>
+                <li>Date Night Planning</li>
+                <li>Emotional Damage Protection</li>
+                <li>Exclusive Boyfriend Privileges</li>
+                <li>VIP Sigma Energy Access</li>
+                <li>Priority Rizz Allocation</li>
+            </ul>
+            
+            <a href="https://checkout.square.site/merchant/MLYDM6E4B49X0/location/LYRQTEYB9FCF5/order/O6Q4P4w5fbSLyZ282JkdOYtRs3fZY" 
+               class="rent-btn" 
+               target="_blank">
+                LOCK IT DOWN 💍
+            </a>
+            
+            <p class="guarantee">♥ No Cap, Premium Experience Only ♥ Terms & Conditions Apply ♥ Break Hearts Not Contracts</p>
+        </div>
+    </section>
+
+    <section class="kaleidoscope-section reveal">
+        <h2 class="section-title glitch" data-text="MULTIVERSE">MULTIVERSE</h2>
+        <div class="kaleidoscope-container" id="kaleidoscope"></div>
+    </section>
+
+    <section class="stats-section reveal">
+        <div class="stat-item">
+            <span class="stat-number" data-target="100">0</span>
+            <span class="stat-label">% GOAT</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="999">0</span>
+            <span class="stat-label">Sigma Level</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="0">0</span>
+            <span class="stat-label">F's Given</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="69">0</span>
+            <span class="stat-label">Aura Points</span>
+        </div>
+    </section>
+
+    <section class="terminal-section reveal">
+        <div class="terminal">
+            <div class="terminal-header">
+                <span>landon_os_v2.0.exe</span>
+                <span>[RUNNING]</span>
+            </div>
+            <div class="terminal-content" id="terminal">
+                <div class="terminal-line">$ initializing_landon_protocol...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-family: 'Black Ops One', cursive; font-size: 2rem; color: var(--goat-gold);">
+            STAY SIGMA
+        </p>
+        <p style="color: #666; margin-top: 1rem;">© 2024 Landon Industries. All goats reserved.</p>
+    </footer>
+
+    <script>
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Create floating hearts for bf section
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            const hearts = ['♥', '💖', '💕', '💗', '💓'];
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        const gridData = [
+            { img: 'landon 1.jpeg', title: 'The Origin Story', desc: 'Where it all began. Pure unfiltered Landon.' },
+            { img: 'landon 2.jpeg', title: 'Rizz Emmanating', desc: 'Cannot be contained. Sigma radiation levels critical.' },
+            { img: 'landon 3.jpeg', title: 'Goat Mode: ACTIVATED', desc: 'Greatest of all time status: CONFIRMED.' },
+            { img: 'landon 4.jpeg', title: 'The Grindset', desc: 'No breaks. Only acceleration.' },
+            { img: 'landon 5.jpeg', title: 'Aura Maxxing', desc: 'Detective levels of swagger.' },
+            { img: 'landon 6.jpeg', title: 'Final Form', desc: 'Peak performance achieved.' }
+        ];
+
+        const gridContainer = document.getElementById('gridContainer');
+        gridData.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'grid-item';
+            div.innerHTML = `
+                <span class="grid-number">0${index + 1}</span>
+                <img src="${item.img}" alt="${item.title}" loading="lazy">
+                <div class="grid-overlay">
+                    <h3 style="font-family: 'Black Ops One'; font-size: 1.5rem; color: var(--goat-gold); margin-bottom: 0.5rem;">
+                        ${item.title}
+                    </h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">${item.desc}</p>
+                </div>
+            `;
+            div.onclick = () => {
+                div.style.transform = 'scale(0.95)';
+                setTimeout(() => div.style.transform = '', 100);
+            };
+            gridContainer.appendChild(div);
+        });
+
+        const kaleidoscope = document.getElementById('kaleidoscope');
+        const kaleidoImages = ['landon 1.jpeg', 'landon 2.jpeg', 'landon 3.jpeg', 'landon 4.jpeg', 'landon 5.jpeg', 'landon 6.jpeg'];
+        
+        kaleidoImages.forEach((img, i) => {
+            const angle = (i / 6) * Math.PI * 2;
+            const radius = 200;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            const rotation = (i / 6) * 360;
+            
+            const imgEl = document.createElement('img');
+            imgEl.src = img;
+            imgEl.className = 'kaleido-img';
+            imgEl.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
+            imgEl.style.zIndex = i;
+            kaleidoscope.appendChild(imgEl);
+        });
+
+        let rotation = 0;
+        function rotateKaleidoscope() {
+            rotation += 0.5;
+            kaleidoscope.style.transform = `rotate(${rotation}deg)`;
+            requestAnimationFrame(rotateKaleidoscope);
+        }
+        rotateKaleidoscope();
+
+        const counters = document.querySelectorAll('.stat-number');
+        const observerOptions = { threshold: 0.5 };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    animateCounter(entry.target, target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+
+        function animateCounter(el, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    el.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    el.textContent = Math.floor(current);
+                }
+            }, 30);
+        }
+
+        const terminalLines = [
+            '$ analyzing_goat_metrics... [DONE]',
+            '$ detecting_sigma_waves... [MAXIMUM]',
+            '$ calculating_aura_density... [OVERFLOW]',
+            '$ status: UNSTOPPABLE',
+            '$ warning: too much rizz detected in sector 7',
+            '> LANDON_PROTOCOL_ACTIVE <'
+        ];
+
+        const terminal = document.getElementById('terminal');
+        let lineIndex = 0;
+
+        function typeLine() {
+            if (lineIndex < terminalLines.length) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.style.animationDelay = (lineIndex * 0.5) + 's';
+                line.textContent = terminalLines[lineIndex];
+                terminal.appendChild(line);
+                lineIndex++;
+                setTimeout(typeLine, 800);
+            } else {
+                const cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                terminal.appendChild(cursor);
+            }
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.querySelector('.terminal-content') && !entry.target.typed) {
+                        entry.target.typed = true;
+                        setTimeout(typeLine, 500);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        let trails = [];
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.left = e.pageX - 10 + 'px';
+            trail.style.top = e.pageY - 10 + 'px';
+            document.body.appendChild(trail);
+            trails.push(trail);
+            
+            setTimeout(() => {
+                trail.remove();
+                trails.shift();
+            }, 500);
+        });
+
+        document.addEventListener('click', (e) => {
+            const glitches = document.querySelectorAll('.glitch');
+            glitches.forEach(g => {
+                g.style.animation = 'none';
+                setTimeout(() => g.style.animation = '', 10);
+            });
+        });
+
+        let konami = [];
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+        document.addEventListener('keydown', (e) => {
+            konami.push(e.key);
+            konami = konami.slice(-10);
+            if (konami.join(',') === konamiCode.join(',')) {
+                document.body.style.filter = 'hue-rotate(180deg) invert(1)';
+                setTimeout(() => {
+                    document.body.style.filter = '';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
