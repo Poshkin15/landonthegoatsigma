@@ -20,6 +20,7 @@
             --money-green: #00ff88;
             --love-pink: #ff006e;
             --love-purple: #8338ec;
+            --charity-blue: #00d9ff;
         }
 
         body {
@@ -154,8 +155,8 @@
 
         .orbit-img {
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
             border: 3px solid var(--goat-gold);
             border-radius: 50%;
@@ -164,17 +165,19 @@
             opacity: 0.8;
         }
 
-        .orbit-img:nth-child(1) { animation-delay: 0s; top: 10%; left: 10%; }
-        .orbit-img:nth-child(2) { animation-delay: -3.33s; top: 10%; right: 10%; animation-direction: reverse; }
-        .orbit-img:nth-child(3) { animation-delay: -6.66s; bottom: 10%; left: 10%; }
-        .orbit-img:nth-child(4) { animation-delay: -10s; bottom: 10%; right: 10%; animation-direction: reverse; }
-        .orbit-img:nth-child(5) { animation-delay: -13.33s; top: 50%; left: 5%; }
-        .orbit-img:nth-child(6) { animation-delay: -16.66s; top: 50%; right: 5%; animation-direction: reverse; }
+        .orbit-img:nth-child(1) { animation-delay: 0s; top: 5%; left: 5%; }
+        .orbit-img:nth-child(2) { animation-delay: -2.5s; top: 5%; right: 5%; animation-direction: reverse; }
+        .orbit-img:nth-child(3) { animation-delay: -5s; top: 40%; left: 2%; }
+        .orbit-img:nth-child(4) { animation-delay: -7.5s; top: 40%; right: 2%; animation-direction: reverse; }
+        .orbit-img:nth-child(5) { animation-delay: -10s; bottom: 5%; left: 10%; }
+        .orbit-img:nth-child(6) { animation-delay: -12.5s; bottom: 5%; right: 10%; animation-direction: reverse; }
+        .orbit-img:nth-child(7) { animation-delay: -15s; top: 20%; left: 15%; }
+        .orbit-img:nth-child(8) { animation-delay: -17.5s; top: 20%; right: 15%; animation-direction: reverse; }
 
         @keyframes orbit {
-            0% { transform: rotate(0deg) translateX(50px) rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) translateX(50px) rotate(-180deg) scale(1.2); }
-            100% { transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1); }
+            0% { transform: rotate(0deg) translateX(30px) rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) translateX(30px) rotate(-180deg) scale(1.1); }
+            100% { transform: rotate(360deg) translateX(30px) rotate(-360deg) scale(1); }
         }
 
         .sigma-grid {
@@ -182,7 +185,6 @@
             background: linear-gradient(180deg, var(--void-black) 0%, #1a1a1a 100%);
         }
 
-        /* FIXED SECTION TITLE - RESPONSIVE AND NO CUTOFF */
         .section-title {
             text-align: center;
             font-size: clamp(1.5rem, 5vw, 3rem);
@@ -400,7 +402,6 @@
                 radial-gradient(circle at 80% 50%, rgba(131, 56, 236, 0.1) 0%, transparent 50%);
         }
 
-        /* Floating hearts */
         .hearts-container {
             position: absolute;
             inset: 0;
@@ -489,6 +490,125 @@
             background: linear-gradient(90deg, transparent, var(--chrome), transparent);
         }
 
+        /* DONATION SECTION */
+        .donation-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0a1628 0%, #0a0a1a 50%, #0a1628 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+        }
+
+        .donation-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .donation-section h2 {
+            color: var(--charity-blue);
+        }
+
+        .donation-desc {
+            color: #a0d2ff;
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .donation-amounts {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .amount-badge {
+            background: rgba(0, 217, 255, 0.1);
+            border: 2px solid var(--charity-blue);
+            color: var(--charity-blue);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Black Ops One', cursive;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .amount-badge:hover {
+            background: var(--charity-blue);
+            color: var(--void-black);
+            transform: scale(1.1);
+        }
+
+        .donation-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--charity-blue), #0099cc);
+            color: var(--void-black);
+            text-decoration: none;
+            padding: 1.5rem 4rem;
+            font-family: 'Black Ops One', cursive;
+            font-size: 1.5rem;
+            border-radius: 100px;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.7);
+            animation: pulse-blue 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(0, 217, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 217, 255, 0); }
+        }
+
+        .donation-btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.4);
+            animation: none;
+        }
+
+        .donation-perks {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            list-style: none;
+        }
+
+        .donation-perks li {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            color: #a0d2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .donation-perks li::before {
+            content: '☆';
+            color: var(--goat-gold);
+        }
+
         .kaleidoscope-section {
             padding: 5rem 2rem;
             background: var(--void-black);
@@ -506,8 +626,8 @@
 
         .kaleido-img {
             position: absolute;
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid var(--goat-gold);
@@ -669,7 +789,7 @@
             .price-tag {
                 font-size: 1.8rem;
             }
-            .rent-btn {
+            .rent-btn, .donation-btn {
                 padding: 1rem 2rem;
                 font-size: 1.2rem;
             }
@@ -692,6 +812,8 @@
             <img src="landon 4.jpeg" class="orbit-img" alt="Landon 4">
             <img src="landon 5.jpeg" class="orbit-img" alt="Landon 5">
             <img src="landon 6.jpeg" class="orbit-img" alt="Landon 6">
+            <img src="landon 7.jpeg" class="orbit-img" alt="Landon 7">
+            <img src="landon 8.jpeg" class="orbit-img" alt="Landon 8">
         </div>
         
         <div class="hero-content">
@@ -780,6 +902,44 @@
         </div>
     </section>
 
+    <!-- DONATION SECTION -->
+    <section class="donation-section reveal">
+        <div class="donation-container">
+            <h2 class="section-title glitch" data-text="SUPPORT THE GRIND">SUPPORT THE GRIND</h2>
+            <p class="donation-desc">
+                Landon's sigma journey isn't cheap. Your contributions help fund the aura, 
+                maintain the rizz, and keep the grindset strong. Every dollar counts.
+            </p>
+            
+            <div class="donation-amounts">
+                <div class="amount-badge">$5</div>
+                <div class="amount-badge">$10</div>
+                <div class="amount-badge">$25</div>
+                <div class="amount-badge">$50</div>
+                <div class="amount-badge">$100</div>
+                <div class="amount-badge">Custom</div>
+            </div>
+            
+            <ul class="donation-perks">
+                <li>Discord VIP Access</li>
+                <li>Exclusive Sigma Tips</li>
+                <li>Personalized Voice Memo</li>
+                <li>Name in Hall of Legends</li>
+                <li>1-on-1 Aura Reading</li>
+            </ul>
+            
+            <a href="https://square.link/u/lg2RLUl9" 
+               class="donation-btn" 
+               target="_blank">
+                DONATE NOW 🙏
+            </a>
+            
+            <p class="guarantee" style="color: #a0d2ff; margin-top: 1.5rem;">
+                ☆ Tax deductible in the multiverse ☆ Good karma guaranteed ☆ Sigma approved
+            </p>
+        </div>
+    </section>
+
     <section class="kaleidoscope-section reveal">
         <h2 class="section-title glitch" data-text="MULTIVERSE">MULTIVERSE</h2>
         <div class="kaleidoscope-container" id="kaleidoscope"></div>
@@ -860,7 +1020,9 @@
             { img: 'landon 3.jpeg', title: 'Goat Mode: ACTIVATED', desc: 'Greatest of all time status: CONFIRMED.' },
             { img: 'landon 4.jpeg', title: 'The Grindset', desc: 'No breaks. Only acceleration.' },
             { img: 'landon 5.jpeg', title: 'Aura Maxxing', desc: 'Detective levels of swagger.' },
-            { img: 'landon 6.jpeg', title: 'Final Form', desc: 'Peak performance achieved.' }
+            { img: 'landon 6.jpeg', title: 'Final Form', desc: 'Peak performance achieved.' },
+            { img: 'landon 7.jpeg', title: 'The Expansion', desc: 'New horizons of sigma energy unlocked.' },
+            { img: 'landon 8.jpeg', title: 'Infinite Aura', desc: 'Transcending mortal limitations.' }
         ];
 
         const gridContainer = document.getElementById('gridContainer');
@@ -885,14 +1047,14 @@
         });
 
         const kaleidoscope = document.getElementById('kaleidoscope');
-        const kaleidoImages = ['landon 1.jpeg', 'landon 2.jpeg', 'landon 3.jpeg', 'landon 4.jpeg', 'landon 5.jpeg', 'landon 6.jpeg'];
+        const kaleidoImages = ['landon 1.jpeg', 'landon 2.jpeg', 'landon 3.jpeg', 'landon 4.jpeg', 'landon 5.jpeg', 'landon 6.jpeg', 'landon 7.jpeg', 'landon 8.jpeg'];
         
         kaleidoImages.forEach((img, i) => {
-            const angle = (i / 6) * Math.PI * 2;
-            const radius = 200;
+            const angle = (i / 8) * Math.PI * 2;
+            const radius = 220;
             const x = Math.cos(angle) * radius;
             const y = Math.sin(angle) * radius;
-            const rotation = (i / 6) * 360;
+            const rotation = (i / 8) * 360;
             
             const imgEl = document.createElement('img');
             imgEl.src = img;
